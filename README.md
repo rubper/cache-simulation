@@ -7,7 +7,10 @@ Open source project for University of El Salvador. Shows the computer's cache's 
 Clone the project
 
 ```bash
-  git clone https://github.com/rubper/cache-simulation/
+  git clone https://github.com/rubper/cache-simulation.git
+```
+```ssh
+  git clone git@github.com:rubper/cache-simulation.git
 ```
 
 Go to the project directory

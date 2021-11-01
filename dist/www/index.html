@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>Test Client Server Updates</title>
+    <style>
+        #obj1
+        {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="obj1"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/anime.min.js"></script>
+<script>
+    var obj1 =
+        {
+            position_x: 0,
+            position_y: 0,
+        };
+
+
+    function updatePosFromServer()
+    {
+        anime({
+            targets: '#obj1',
+            translateX: obj1.position_x,
+            translateY: obj1.position_y,
+        });
+
+    }
+
+    function init () {
+       // setInitPos();
+        var socket = io();
+        socket.on('updatepos', function(msg){
+            obj1 = msg.obj1;
+            console.log("updating obj1");
+            console.log(msg.obj1);
+            updatePosFromServer();
+        });
+    };
+
+    init();
+</script>
+</body>
+</html>
